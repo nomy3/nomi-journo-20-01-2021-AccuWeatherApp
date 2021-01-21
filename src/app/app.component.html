@@ -1,0 +1,22 @@
+<br />
+
+<app-autocomplete-cities (select)="selectForecast($event)"></app-autocomplete-cities>
+
+<div *ngIf="currentCondition">
+  <span style="font-weight: bold;">Current weather in {{cityName}}:</span>
+  {{currentCondition.weatherText}} - {{currentCondition.temperature.imperial.value}}{{currentCondition.temperature.imperial.unit}}
+</div>
+
+<br />
+
+<div *ngIf="forcast.length > 0" class="forcast">
+  <div style="text-decoration: underline;">Next 5 Days:</div>
+  <div *ngFor="let f of forcast" class="day">
+    <div style="font-weight: bold;">{{f.date | date}}</div>
+    Day: {{f.day.iconPhrase}}
+    <br/>
+    Night: {{f.night.iconPhrase}}
+    <br/>
+    Max: {{f.temperature.maximum.value}}{{f.temperature.maximum.unit}} | Min: {{f.temperature.minimum.value}}{{f.temperature.minimum.unit}}
+  </div>
+</div>
